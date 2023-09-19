@@ -1,0 +1,14 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+
+.social-links {
+  display: flex;
+  gap: $xs-size;
+  margin-bottom: $xs-size;
+}
+
+.social-link {
+  align-self: center;
+  color: inherit;
+  text-decoration: none;
+}

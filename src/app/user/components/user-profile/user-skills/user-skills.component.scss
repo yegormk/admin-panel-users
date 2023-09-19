@@ -1,0 +1,8 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+
+.skills-chips.chips {
+  background-color: $primary-color-light;
+  border: $primary-border;
+  pointer-events: none;
+}

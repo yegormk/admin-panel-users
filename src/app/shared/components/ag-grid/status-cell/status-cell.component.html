@@ -1,0 +1,8 @@
+<p
+  *ngIf="status; else notApplicable"
+  class="wrapper"
+  [ngStyle]="{ color: statusesData[status]!.color }">
+  <mat-icon>{{ statusesData[status]!.icon }}</mat-icon>
+  {{ statusesData[status]!.name }}
+</p>
+<ng-template #notApplicable>N/A</ng-template>

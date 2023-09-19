@@ -1,0 +1,36 @@
+<ng-container *ngIf="userData$ | async as workHistory">
+  <app-content-card>
+    <div class="upper-wrapper">
+      <h3 class="mat-subtitle-2 primary">Work History</h3>
+      <button
+        mat-icon-button
+        class="icon-btn"
+        aria-label="Edit content button">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="icon-btn"
+        aria-label="Copy content button"
+        (click)="clipboardService.copyToClipboard({workHistory})">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+    <div
+      *ngFor="let work of workHistory"
+      class="work-item">
+      <p class="mat-headline-6 project-name">{{ work.project }}</p>
+      <p class="mat-caption light">
+        {{ work.startDate | date }}-
+        {{ work.endDate | date }}
+      </p>
+      <p class="mat-subtitle-1">Position on Project</p>
+      <p>{{ work.positionOnProject }}</p>
+      <p class="mat-subtitle-1">Responsibilities</p>
+      <p>{{ work.responsibility }}</p>
+    </div>
+    <app-empty-message
+      *ngIf="!workHistory.length"
+      title="work history"></app-empty-message>
+  </app-content-card>
+</ng-container>

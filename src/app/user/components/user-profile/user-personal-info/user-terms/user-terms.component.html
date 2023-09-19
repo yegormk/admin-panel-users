@@ -1,0 +1,30 @@
+<ng-container *ngIf="userData$ | async as userData">
+  <div class="terms">
+    <p class="detail">
+      <span class="term">Start:</span>
+      <span>{{ userData.startDate | date }}</span>
+    </p>
+    <p
+      *ngIf="userData.endDate"
+      class="detail">
+      <span class="term">End:</span>
+      <span>{{ userData.endDate | date }}</span>
+    </p>
+    <p
+      *ngIf="userData.endReason"
+      class="detail">
+      <span class="term">Reason:</span>
+      <span>{{ userData.endReason }}</span>
+    </p>
+    <p class="detail project-status">
+      <span class="term">Project:</span>
+      <span>{{ userData.isOnProject ? 'ON' : 'OFF' }}</span>
+      <span [ngClass]="userData.isOnProject ? 'on-project' : 'off-project'">
+        <span class="bg-circle"></span>
+        <mat-icon>
+          {{ userData.isOnProject ? 'check_circle' : 'cancel' }}
+        </mat-icon>
+      </span>
+    </p>
+  </div>
+</ng-container>

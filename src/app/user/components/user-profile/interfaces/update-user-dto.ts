@@ -1,0 +1,42 @@
+import { IUserEducationDetails } from 'src/app/shared/interfaces/user-education';
+import { IUserWorkHistory } from 'src/app/shared/interfaces/user-work-history';
+
+export interface IUpdateUserDTO {
+  email?: string;
+  password?: string;
+  name?: string;
+  surname?: string;
+  positionDescription?: string;
+  language?: string;
+  endReason?: string;
+  avatarUrl?: string;
+  phone?: string;
+  city?: string;
+  salary?: number;
+  address?: string;
+  skills?: string;
+  experience?: string;
+  isBanned?: boolean;
+  banReason?: string;
+  birthday?: string;
+  cvId?: number;
+  startDate?: string;
+  endDate?: string;
+  workTypeId?: number;
+  status?: string;
+  upwork?: string;
+  github?: string;
+  linkedin?: string;
+  telegramTag?: string;
+  individualEntrepreneurName?: string;
+  individualEntrepreneurAddress?: string;
+  individualEntrepreneurIndividualTaxNumber?: number;
+  individualEntrepreneurBankAccounNumber?: string;
+  individualEntrepreneurBankName?: string;
+  individualEntrepreneurBankCode?: number;
+  individualEntrepreneurBeneficiaryBank?: string;
+  individualEntrepreneurSwiftCode?: string;
+  defaultCoverLetter?: string;
+  educationInfo?: IUserEducationDetails[];
+  workHistory?: IUserWorkHistory[];
+}

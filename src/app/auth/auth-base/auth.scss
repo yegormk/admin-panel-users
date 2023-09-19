@@ -1,0 +1,49 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_media-mixins.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 25em;
+  margin: 20vh auto;
+
+  @include media(tablet) {
+    width: 30em;
+  }
+
+  .card-inner {
+    width: 100%;
+    gap: $m-size;
+
+    .header {
+      text-align: center;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: $xxs-size;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: $s-size;
+    }
+  }
+
+  .login-btn {
+    background: $accent-gradient;
+    height: $xxl-size;
+    color: $base-text-color;
+
+    &:disabled {
+      background: $bg-gradient;
+      color: $light-subtitle-color;
+    }
+  }
+}
+
+.link {
+  margin-left: auto;
+}

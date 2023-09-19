@@ -1,0 +1,84 @@
+<ng-container *ngIf="siteNavigationLinksData$ | async as linksData">
+  <div
+    autosize
+    class="main-layout">
+    <div class="sidenav-holder">
+      <div *ngIf="linksData.length">
+        <div class="avatar-thumb">
+          <img
+            *ngIf="currentUserAvatar$ | async"
+            class="avatar"
+            [src]="currentUserAvatar$ | async" />
+        </div>
+        <nav>
+          <ul class="sidenav">
+            <li *ngFor="let link of linksData">
+              <button
+                *ngIf="link.accessPermission"
+                mat-flat-button
+                class="navigation-button"
+                routerLinkActive="active"
+                attr.aria-label="Go to {{ link.name }} page"
+                [routerLinkActiveOptions]="{ exact: true }"
+                [routerLink]="link.path">
+                <mat-icon class="btn-icon">
+                  {{ link.iconName }}
+                </mat-icon>
+                <span>{{ link.name | titlecase }}</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <mat-divider></mat-divider>
+        <ul class="sidenav">
+          <li>
+            <button
+              mat-flat-button
+              class="navigation-button"
+              (click)="onLogout()">
+              <mat-icon class="btn-icon">logout</mat-icon>
+              <span>Log out</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-content">
+      <div class="upper-bar">
+        <div>
+          <p class="greeting">
+            {{ 'Hi,' }} {{ currentUserName$ | async | titlecase }}
+            <span [innerHTML]="wavingHand"></span>
+          </p>
+          <p class="mat-headline-5 mb-0">Welcome Back!</p>
+        </div>
+        <div class="logo-thumb">
+          <app-custom-icon
+            class="logo"
+            name="logo"></app-custom-icon>
+        </div>
+      </div>
+      <div class="page-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="linksData.length"
+    class="mobile-nav">
+    <ng-container *ngFor="let link of linksData">
+      <button
+        *ngIf="link.accessPermission"
+        mat-icon-button
+        class="navigation-button"
+        routerLinkActive="active"
+        attr.aria-label="Go to {{ link.name }} page"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="link.path">
+        <mat-icon class="btn-icon">
+          {{ link.iconName }}
+        </mat-icon>
+      </button>
+    </ng-container>
+  </div>
+</ng-container>

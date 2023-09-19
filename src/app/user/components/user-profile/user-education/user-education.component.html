@@ -1,0 +1,58 @@
+<ng-container *ngIf="userEducation$ | async as educationInfo">
+  <app-content-card>
+    <div class="upper-wrapper">
+      <h3 class="mat-subtitle-2 primary">Education</h3>
+      <button
+        mat-icon-button
+        class="icon-btn"
+        aria-label="Copy content button"
+        (click)="
+          clipboardService.copyToClipboard({educationInfo}, clipboardRegistry)
+        ">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="icon-btn"
+        aria-label="Add education button"
+        (click)="onEditEducation()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <ul class="column-wrapper">
+      <li *ngFor="let education of educationInfo; let last = last">
+        <div class="education-upper">
+          <p class="university-name">
+            {{ education.universityName | uppercase }}
+          </p>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            aria-label="Edit education button"
+            (click)="onEditEducation(education.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            aria-label="Delete education button"
+            (click)="onDeleteEducation(education.id)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
+        <p
+          *ngIf="education.startDate"
+          class="mat-caption light">
+          {{ education.startDate | date : 'y' }} -
+          {{ education.endDate | date : 'y' }}
+        </p>
+        <p>{{ education.educationLevel | titlecase }}</p>
+        <p>{{ education.specialization | titlecase }}</p>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </li>
+    </ul>
+    <app-empty-message
+      *ngIf="!educationInfo?.length"
+      title="education"></app-empty-message>
+  </app-content-card>
+</ng-container>

@@ -1,0 +1,11 @@
+@import '/src/styles/_variables.scss';
+
+.education-upper {
+  display: flex;
+  gap: $xs-size;
+}
+
+.university-name {
+  margin: 0 $xs-size $xxs-size 0;
+  flex-grow: 2;
+}

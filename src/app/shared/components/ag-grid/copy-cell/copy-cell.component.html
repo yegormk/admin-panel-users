@@ -1,0 +1,12 @@
+<p class="wrapper">
+  {{
+    valueToCopy.length > 19
+      ? (valueToCopy | slice : 0 : 17) + '...'
+      : valueToCopy
+  }}
+  <mat-icon
+    class="copy-icon"
+    [cdkCopyToClipboard]="valueToCopy">
+    file_copy
+  </mat-icon>
+</p>

@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+@import '/src/styles/_variables.scss';
+
+$typography: mat.define-typography-config(
+  $font-family: $body-font,
+  $body-2: mat.define-typography-level($body-font-size, 1.25, 400),
+  $headline-5: mat.define-typography-level($l-header-font-size, 1.2, 600),
+  $headline-6: mat.define-typography-level($m-header-font-size, 1.2, 500),
+  $subtitle-2: mat.define-typography-level($subtitle-font-size, 1.2, 500),
+  $subtitle-1: mat.define-typography-level($subtitle-font-size, 1.2, 400),
+  $caption: mat.define-typography-level($xxs-font-size, 1.2, 400),
+);

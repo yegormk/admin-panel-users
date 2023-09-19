@@ -1,0 +1,7 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+
+.empty {
+  margin: $s-size 0;
+  color: $light-subtitle-color;
+}

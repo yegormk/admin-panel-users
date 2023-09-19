@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@import '/src/styles/_typography.scss';
+
+$palette-primary: mat.define-palette(mat.$blue-palette, 600);
+$palette-accent: mat.define-palette(mat.$green-palette, A400);
+
+@include mat.typography-hierarchy($typography);
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $palette-primary,
+      accent: $palette-accent,
+    ),
+    typography: $typography,
+    density: -1,
+  )
+);

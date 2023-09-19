@@ -1,0 +1,82 @@
+<app-edit-modal-wrapper
+  title="Edit Education"
+  [isFormValid]="form.valid"
+  (cancel)="_dialogRef.close()"
+  (save)="onSubmit()">
+  <form
+    class="form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+    <div class="single-column">
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>University Name</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="universityName" />
+        <mat-error *ngIf="checkRequiredError('universityName')">
+          University Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            formControlName="startDate"
+            placeholder="Start date" />
+          <input
+            matEndDate
+            formControlName="endDate"
+            placeholder="End date" />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-error
+          class="date-error"
+          *ngIf="checkRequiredError('startDate')">
+          Start date is required
+        </mat-error>
+        <mat-error
+          class="date-error"
+          *ngIf="checkRequiredError('endDate')">
+          End date is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Education Level</mat-label>
+        <mat-select formControlName="educationLevel">
+          <mat-option
+            *ngFor="let level of educationLevels"
+            [value]="level">
+            {{ level | titlecase }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="checkRequiredError('educationLevel')">
+          Education Level is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Specialization</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="specialization" />
+        <mat-error *ngIf="checkRequiredError('specialization')">
+          Specialization is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</app-edit-modal-wrapper>

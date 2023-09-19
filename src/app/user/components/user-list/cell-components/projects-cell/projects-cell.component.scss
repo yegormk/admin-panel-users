@@ -1,0 +1,19 @@
+@import 'src/styles/color-palette';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.project {
+  display: flex;
+  flex-direction: row;
+
+  .project-link {
+    color: $base-text-color;
+  }
+
+  .separator {
+    white-space: break-spaces;
+  }
+}

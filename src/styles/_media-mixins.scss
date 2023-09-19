@@ -1,0 +1,41 @@
+@import '/src/styles/_variables.scss';
+
+@mixin media($type) {
+  @if $type == 'mobile' {
+    @media screen and (min-width: $mobile) {
+      @content;
+    }
+  }
+
+  @if $type == 'l-mobile' {
+    @media screen and (min-width: $l-mobile) {
+      @content;
+    }
+  }
+
+  @if $type == 'tablet' {
+    @media screen and (min-width: $tablet) {
+      @content;
+    }
+  }
+
+  @if $type == 'l-tablet' {
+    @media screen and (min-width: $l-tablet) {
+      @content;
+    }
+  }
+
+  @if $type == 'desktop' {
+    @media screen and (min-width: $desktop) {
+      @content;
+    }
+  }
+
+  @if $type == 'retina' {
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      @content;
+    }
+  }
+}

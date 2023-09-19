@@ -1,0 +1,18 @@
+export const clipboardPersonalInfoRegistry = new Map<string, string>([
+  ['email', 'Email'],
+  ['name', 'Name'],
+  ['surname', 'Surname'],
+  ['positionDescription', 'Position description'],
+  ['language', 'Language'],
+  ['endReason', 'Dismissal reason'],
+  ['phone', 'Phone number'],
+  ['salary', 'Salary'],
+  ['skills', 'Skills'],
+  ['experience', 'Experience'],
+  ['isBanned', ' Is Banned'],
+  ['banReason', 'Ban Reason'],
+  ['birthday', 'Birthday'],
+  ['startDate', 'Start Day'],
+  ['endDate', 'Dismissal Day'],
+  ['status', 'Status'],
+]);

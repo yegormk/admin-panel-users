@@ -1,0 +1,111 @@
+<app-edit-modal-wrapper
+  title="Edit Personal Info"
+  [isFormValid]="form.valid"
+  (cancel)="_dialogRef.close()"
+  (save)="onSubmit()">
+  <form
+    class="form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+    <div class="double-column">
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="name" />
+      </mat-form-field>
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="surname" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Birthday</mat-label>
+        <input
+          matInput
+          formControlName="birthday"
+          [matDatepicker]="birthday" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="birthday">
+          <mat-icon matDatepickerToggleIcon>arrow_drop_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #birthday></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="phone" />
+        <mat-error *ngIf="form.controls['phone'].hasError('pattern')">
+          Example: +380631234567
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="input-field"
+        appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="email" />
+        <mat-error *ngIf="form.controls['email'].hasError('email')">
+          Invalid Email
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          formControlName="startDate"
+          [matDatepickerFilter]="startDateFilter"
+          [matDatepicker]="startDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+        <mat-error *ngIf="form.controls['startDate'].hasError('required')">
+          Start date is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>End Date</mat-label>
+        <input
+          matInput
+          formControlName="endDate"
+          [matDatepickerFilter]="endDateFilter"
+          [matDatepicker]="endDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        *ngIf="form.get('endReason')"
+        class="input-field"
+        appearance="outline">
+        <mat-label>End Reason</mat-label>
+        <input
+          matInput
+          class="input"
+          formControlName="endReason" />
+        <mat-error *ngIf="form.controls['endReason'].hasError('required')">
+          End reason is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</app-edit-modal-wrapper>

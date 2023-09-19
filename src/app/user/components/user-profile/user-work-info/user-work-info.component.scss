@@ -1,0 +1,15 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+
+.work-item {
+  padding-top: $l-size;
+
+  &:not(:last-of-type) {
+    padding: 0 0 $l-size 0;
+    border-bottom: $base-border;
+  }
+
+  .project-name {
+    margin-bottom: $xxs-size;
+  }
+}

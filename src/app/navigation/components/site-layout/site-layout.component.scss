@@ -1,0 +1,130 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+@import '/src/styles/_media-mixins.scss';
+
+.main-layout {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+}
+
+.sidenav-holder {
+  display: none;
+
+  @include media(tablet) {
+    display: block;
+    min-width: 15em;
+    width: fit-content;
+    padding: $m-size;
+  }
+}
+
+.sidenav {
+  @include media(tablet) {
+    display: flex;
+    flex-direction: column;
+    gap: $xs-size;
+    width: 100%;
+    padding: $xs-size 0;
+  }
+}
+
+.avatar-thumb {
+  width: calc($avatar-width/ 2);
+  height: calc($avatar-width/ 2);
+  margin: 0 auto $l-size;
+  border-radius: 50%;
+  background-color: $light-caption-color;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.site-content {
+  padding: $xs-size;
+  width: 100%;
+
+  @include media(tablet) {
+    padding: $m-size;
+    padding-left: 0;
+    width: 85%;
+  }
+}
+
+.upper-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $m-size;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  margin-bottom: $xxs-size;
+  gap: $xs-size;
+
+  & .mat-icon {
+    font-size: $xs-icon-size;
+    color: $primary-color;
+  }
+}
+
+.logo-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $xxs-size;
+  background: $accent-gradient;
+  border-radius: $xxs-size;
+}
+
+.logo {
+  display: flex;
+}
+
+.page-wrapper {
+  min-height: 100%;
+  background: $bg-gradient;
+  border-radius: $s-size;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: calc(100vh - $xxl-size);
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: $xxl-size;
+  width: 100%;
+  background-color: $white-bg-color;
+  border-top-right-radius: $m-size;
+  border-top-left-radius: $m-size;
+  box-shadow: $base-box-shadow;
+  @include media(tablet) {
+    display: none;
+    padding: 0 $xs-size;
+  }
+}
+
+.sidenav .navigation-button {
+  justify-content: flex-start;
+  height: $xxl-size;
+  background-color: transparent;
+  border-radius: $s-size;
+  width: 100%;
+}
+
+.navigation-button.active {
+  background: $accent-gradient;
+}
+
+.btn-icon {
+  font-size: $s-icon-size;
+}

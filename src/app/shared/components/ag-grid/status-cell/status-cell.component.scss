@@ -1,0 +1,7 @@
+@import '/src/styles/_variables.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: $xxs-size;
+}

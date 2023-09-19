@@ -1,0 +1,48 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+@import '/src/styles/_media-mixins.scss';
+
+.terms {
+  display: flex;
+  flex-direction: column;
+}
+
+.term {
+  width: $xxl-size;
+  color: $light-subtitle-color;
+}
+
+.project-status {
+  margin-top: auto;
+
+  & .mat-icon {
+    position: absolute;
+    top: -35%;
+    right: -$xxs-size;
+    color: inherit;
+  }
+}
+
+.on-project {
+  position: relative;
+  width: $l-size;
+  height: $s-size;
+  background-color: $light-accent-color;
+  color: $dark-accent-color;
+  border-radius: $xs-size;
+}
+
+.off-project {
+  @extend .on-project;
+  background-color: $light-caption-color;
+  color: $base-header-color;
+}
+
+.bg-circle {
+  position: absolute;
+  right: 0;
+  width: $s-size;
+  height: $s-size;
+  background-color: $white-bg-color;
+  border-radius: 50%;
+}

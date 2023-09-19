@@ -1,0 +1,19 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+@import '/src/styles/_media-mixins.scss';
+
+.card-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: $s-size;
+  border-radius: $xs-size;
+  box-shadow: $base-box-shadow;
+  background-color: $white-bg-color;
+
+  @include media(tablet) {
+    padding: $m-size;
+  }
+  @include media(desktop) {
+    padding: $l-size;
+  }
+}

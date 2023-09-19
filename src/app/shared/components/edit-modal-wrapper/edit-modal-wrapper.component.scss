@@ -1,0 +1,31 @@
+@import '/src/styles/_variables.scss';
+@import '/src/styles/_color-palette.scss';
+@import '/src/styles/_media-mixins.scss';
+
+.wrapper {
+  padding: $xs-size $xs-size 0;
+
+  @include media(tablet) {
+    min-width: 25em;
+  }
+}
+
+.upper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $xs-size;
+  padding: $xs-size 0 0 $xs-size;
+}
+
+.title {
+  color: $base-text-color;
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $xs-size;
+  padding: 0;
+}

@@ -1,0 +1,15 @@
+<div
+  *ngIf="projects.length; else notApplicable"
+  class="wrapper">
+  <div
+    *ngFor="let project of projects; let last = last"
+    class="project">
+    <a
+      class="project-link"
+      [routerLink]="['/dashboard/project', project.id]">
+      {{ project.name }}
+    </a>
+    <span class="separator">{{ last ? '' : ', ' }}</span>
+  </div>
+</div>
+<ng-template #notApplicable>N/A</ng-template>

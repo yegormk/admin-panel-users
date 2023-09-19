@@ -1,0 +1,120 @@
+<div class="column-wrapper">
+  <ng-container *ngIf="userContacts$ | async as userContactsData">
+    <app-content-card>
+      <div class="upper-wrapper">
+        <h3 class="mat-subtitle-2 primary">Address</h3>
+        <button
+          mat-icon-button
+          class="icon-btn"
+          aria-label="Edit content button"
+          (click)="onEditContacts()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="icon-btn"
+          aria-label="Copy content button"
+          (click)="clipboardService.copyToClipboard(userContactsData)">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+      <p>{{ userContactsData.address }}</p>
+      <app-empty-message
+        *ngIf="(isEmpty$ | async)?.contacts"
+        title="address"></app-empty-message>
+      <h4
+        *ngIf="userContactsData.city"
+        class="mat-subtitle-1">
+        City:
+      </h4>
+      <p>{{ userContactsData.city }}</p>
+    </app-content-card>
+  </ng-container>
+  <ng-container *ngIf="userBankData$ | async as userBankData">
+    <app-content-card>
+      <div>
+        <div class="upper-wrapper">
+          <h3 class="mat-subtitle-2 primary">Bank Invoice Info</h3>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            aria-label="Edit content button"
+            (click)="onEditBank()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            aria-label="Copy content button"
+            (click)="
+              clipboardService.copyToClipboard(
+                userBankData,
+                bankSocialsClipboardRegistry
+              )
+            ">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <ng-container *ngFor="let title of userBankInfoTitles | keyvalue">
+          <p
+            *ngIf="userBankData[title.key]"
+            class="mat-subtitle-1">
+            {{ title.value }}:
+          </p>
+          <p>{{ userBankData[title.key] }}</p>
+        </ng-container>
+        <app-empty-message
+          *ngIf="(isEmpty$ | async)?.bank"
+          title="bank invoice info"></app-empty-message>
+      </div>
+    </app-content-card>
+  </ng-container>
+  <ng-container *ngIf="userSocialsData$ | async as userSocialsData">
+    <app-content-card>
+      <div>
+        <div class="upper-wrapper">
+          <h3 class="mat-subtitle-2 primary">Social Links</h3>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            aria-label="Edit content button"
+            (click)="onEditSocials()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            aria-label="Copy content button"
+            (click)="
+              clipboardService.copyToClipboard(
+                userSocialsData,
+                bankSocialsClipboardRegistry
+              )
+            ">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <ng-container
+          *ngFor="let socialLink of UserSocialLinksTitles | keyvalue">
+          <ng-container *ngIf="userSocialsData[socialLink.key]">
+            <div class="social-links">
+              <app-custom-icon [name]="socialLink.key"></app-custom-icon>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                [href]="userSocialsData[socialLink.key]">
+                {{ socialLink.value | titlecase }}
+              </a>
+            </div>
+          </ng-container>
+        </ng-container>
+        <app-empty-message
+          *ngIf="(isEmpty$ | async)?.socials"
+          title="social links"></app-empty-message>
+      </div>
+    </app-content-card>
+  </ng-container>
+</div>

@@ -1,0 +1,26 @@
+<ng-container *ngIf="(userSkills$ | async)?.techStack as skills">
+  <app-content-card>
+    <div>
+      <div class="upper-wrapper">
+        <h3 class="mat-subtitle-2 primary">Skills</h3>
+        <button
+          mat-icon-button
+          class="icon-btn"
+          aria-label="Edit content button"
+          (click)="onEditSkills()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <mat-chip-listbox aria-label="User skills">
+        <mat-chip
+          *ngFor="let skill of skills"
+          class="chips skills-chips">
+          {{ skill.title }}
+        </mat-chip>
+      </mat-chip-listbox>
+      <app-empty-message
+        *ngIf="!skills.length"
+        title="skills"></app-empty-message>
+    </div>
+  </app-content-card>
+</ng-container>

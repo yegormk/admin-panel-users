@@ -1,0 +1,40 @@
+<app-edit-modal-wrapper
+  [title]="dialogData.header"
+  [isFormValid]="form.valid"
+  (cancel)="_dialogRef.close()"
+  (save)="onSubmit()">
+  <form
+    class="form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+    <div [ngClass]="dialogData.style">
+      <ng-container
+        *ngFor="
+          let title of (dialogData.titles | keyvalue) || [dialogData.formData]
+        ">
+        <mat-form-field
+          class="input-field"
+          appearance="outline">
+          <mat-label>
+            {{ title.value | titlecase }}
+          </mat-label>
+          <textarea
+            *ngIf="dialogData.textareaFields?.includes(title.key); else input"
+            matInput
+            rows="7"
+            class="input"
+            formControlName="{{ title.key }}"></textarea>
+          <ng-template #input>
+            <input
+              matInput
+              class="input"
+              formControlName="{{ title.key }}" />
+          </ng-template>
+          <mat-error *ngIf="form.controls[title.key].hasError('pattern')">
+            {{ dialogData.validationOptions?.get(title.key)?.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+      </ng-container>
+    </div>
+  </form>
+</app-edit-modal-wrapper>
